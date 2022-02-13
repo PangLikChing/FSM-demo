@@ -9,7 +9,7 @@ public class GhostController : MonoBehaviour
 {
 	public Vector2 ReturnLocation = new Vector2(0, 0);
 
-	private Animator _animator;
+	[HideInInspector] public Animator _animator;
 	public Transform PacMan;
 	public float speed;
 
