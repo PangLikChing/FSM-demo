@@ -9,9 +9,10 @@ using UnityEngine;
 public class BlinkyChasePlayerState : GhostBaseState
 {
     int currentPoint = 0;
+    [SerializeField] float attackDistance, chaseDistance;
     [SerializeField] Vector2 firstPoint, secondPoint;
     Vector2[] points = new Vector2[2];
-    Vector2 myPosition;
+    Vector2 pacManPosition, myPosition;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -28,6 +29,9 @@ public class BlinkyChasePlayerState : GhostBaseState
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Get Pac Man's current position
+        pacManPosition = ghostController.PacMan.position;
+
         // Get Blinky's current position
         myPosition = ghostController.transform.position;
 
@@ -38,8 +42,24 @@ public class BlinkyChasePlayerState : GhostBaseState
             animator.SetBool("IsGhost", true);
         }
 
+        // If Pac man comes into the attackDistance of Blinky
+        if (Vector2.Distance(pacManPosition, myPosition) <= attackDistance)
+        {
+            // If Blinky is not too far from either of the patrol points
+            if (Vector2.Distance(myPosition, firstPoint) <= chaseDistance || Vector2.Distance(myPosition, secondPoint) <= chaseDistance)
+            {
+                // Chase Pac man
+                ghostController.SetMoveToLocation(pacManPosition);
+            }
+            // If it is too far already
+            else
+            {
+                // Go back to patrol
+                ghostController.SetMoveToLocation(points[currentPoint]);
+            }
+        }
         // If Blinky's position is at the target point
-        if (myPosition == points[currentPoint])
+        else if (myPosition == points[currentPoint])
         {
             // If current point is not the final point
             if (currentPoint != points.Length - 1)
