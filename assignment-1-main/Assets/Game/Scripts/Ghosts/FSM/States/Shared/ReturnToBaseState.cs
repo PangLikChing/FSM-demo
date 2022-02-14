@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// State where the ghost is returning to the base
+/// </summary>
+
 public class ReturnToBaseState : GhostBaseState
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

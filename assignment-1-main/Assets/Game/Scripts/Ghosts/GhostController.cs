@@ -9,6 +9,7 @@ public class GhostController : MonoBehaviour
 {
 	public Vector2 ReturnLocation = new Vector2(0, 0);
 
+	// I changed the _animator to public for ease of use. Can turn it back to private if it is needed
 	[HideInInspector] public Animator _animator;
 	public Transform PacMan;
 	public float speed;

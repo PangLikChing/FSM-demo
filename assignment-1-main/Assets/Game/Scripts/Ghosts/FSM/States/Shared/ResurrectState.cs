@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The state where the ghost is resurrecting
+/// </summary>
+
 public class ResurrectState : GhostBaseState
 {
     [SerializeField] float timeNeededToResurrect = 3;
