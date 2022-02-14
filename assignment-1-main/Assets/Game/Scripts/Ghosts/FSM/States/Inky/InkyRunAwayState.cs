@@ -24,7 +24,7 @@ public class InkyRunAwayState : GhostBaseState
         // Get pac man's current position
         pacManPosition = ghostController.PacMan.position;
 
-        // Get Pinky's current position
+        // Get Inky's current position
         myPosition = ghostController.transform.position;
 
         // If the ghost is dead
