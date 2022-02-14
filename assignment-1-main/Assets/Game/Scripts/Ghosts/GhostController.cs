@@ -33,6 +33,7 @@ public class GhostController : MonoBehaviour
 
     private void OnDestroy()
     {
+		// This line is causing a lot of errors
 		GameDirector.Instance.GameStateChanged.RemoveListener(GameStateChanged);
     }
 

@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunAwayState : GhostBaseState
+/// <summary>
+/// Blinky is a lasy one. When he knows that everyone is supposed to run away,
+/// he will just hide in the base
+/// </summary>
+
+public class BlinkyRunAwayState : GhostBaseState
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Return to base
+        ghostController.SetMoveToLocation(ghostController.ReturnLocation);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -47,8 +47,6 @@ public class ClydeRunAwayState : GhostBaseState
         }
 
         // If Clyde's position is at the target point
-        Debug.Log(myPosition);
-        Debug.Log(points[currentPoint]);
         if (myPosition == points[currentPoint])
         {
             // If current point is not the first point

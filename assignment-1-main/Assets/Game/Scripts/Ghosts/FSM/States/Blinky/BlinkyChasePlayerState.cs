@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Clyde is a dumb one. He just run around in circle and do not really "chase" the player
+/// Blinky is a lasy one. He always want to sleep and he is just pretenting he is doing his job
 /// </summary>
 
-public class ClydeChasePlayerState : GhostBaseState
+public class BlinkyChasePlayerState : GhostBaseState
 {
     int currentPoint = 0;
-    [SerializeField] Vector2 firstPoint, secondPoint, thirdPoint, fourthPoint;
-    Vector2[] points = new Vector2[4];
+    [SerializeField] Vector2 firstPoint, secondPoint;
+    Vector2[] points = new Vector2[2];
     Vector2 myPosition;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,8 +21,6 @@ public class ClydeChasePlayerState : GhostBaseState
         // Initialize the points
         points[0] = firstPoint;
         points[1] = secondPoint;
-        points[2] = thirdPoint;
-        points[3] = fourthPoint;
 
         // Set the first destination to the first point
         ghostController.SetMoveToLocation(points[0]);
@@ -30,7 +28,7 @@ public class ClydeChasePlayerState : GhostBaseState
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Get Clyde's current position
+        // Get Blinky's current position
         myPosition = ghostController.transform.position;
 
         // If pac man is currently invincible
@@ -40,7 +38,7 @@ public class ClydeChasePlayerState : GhostBaseState
             animator.SetBool("IsGhost", true);
         }
 
-        // If Clyde's position is at the target point
+        // If Blinky's position is at the target point
         if (myPosition == points[currentPoint])
         {
             // If current point is not the final point
